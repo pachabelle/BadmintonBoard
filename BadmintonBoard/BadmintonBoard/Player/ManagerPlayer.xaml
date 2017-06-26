@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:player="clr-namespace:BadmintonBoard.Player;assembly=BadmintonBoard"
+             x:Class="BadmintonBoard.Player.ManagerPlayer">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <player:GradeConverter x:Key="GradeConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Image Grid.RowSpan="3" Source="shuttlecock.png" Opacity=".03" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+            <Grid Grid.Row="0" HorizontalOptions="Fill" 
+                  HeightRequest="20" 
+                  Margin="0,8"
+                  Padding="0,4"
+                  BackgroundColor="#0099FF">
+                <Label Text="Players" 
+                       FontSize="18" 
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="White"/>
+            </Grid>
+
+            <ListView Grid.Row="1" ItemsSource="{Binding Players, Mode=OneWay}" Margin="0,4">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid BackgroundColor="#F8F8F8" Margin="0,1" Padding="12,4">
+                                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                    <Grid HeightRequest="4" WidthRequest="16">
+                                        <BoxView Color="#707070" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                                        <Label Text="{Binding Grade, Converter={StaticResource GradeConverter}}"
+                                               HorizontalOptions="Center"
+                                               TextColor="White"/>
+                                    </Grid>
+                                    <Label Text="{Binding DisplayName}"/>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <StackLayout Grid.Row="2" Margin="0,8" Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Add Player" Command="{Binding AddPlayerCommnd}"/>
+                <Button Text="Finish" Command="{Binding FinishCommand}"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

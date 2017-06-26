@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BadmintonBoard.Board.SelectVenuePage">
+    <ContentPage.Content>
+        <Grid>
+            <Image Source="shuttlecock.png" Opacity=".03" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            
+            <Picker ItemsSource="{Binding Venues}"
+                HorizontalOptions="CenterAndExpand" 
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="300"
+                HeightRequest="60"
+                ItemDisplayBinding="{Binding Name}"
+                Title="Select a venue"
+                SelectedItem="{Binding SelectedVenue}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
