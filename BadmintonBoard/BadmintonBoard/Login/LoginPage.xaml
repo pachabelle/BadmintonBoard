@@ -4,7 +4,7 @@
              x:Class="BadmintonBoard.Login.LoginPage">
     <ContentPage.Content>
         <Grid>
-            <Image Source="shadowplayers.jpg"
+            <Image x:Name="BgImage" Source="shadowplayers.jpg"
                    Opacity=".5"
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"/>

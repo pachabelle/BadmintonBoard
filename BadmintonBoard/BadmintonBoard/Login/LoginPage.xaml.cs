@@ -20,5 +20,11 @@ namespace BadmintonBoard.Login
 
             BindingContext = App.StartPageViewModel;
         }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            BgImage.Source = null;
+        }
     }
 }

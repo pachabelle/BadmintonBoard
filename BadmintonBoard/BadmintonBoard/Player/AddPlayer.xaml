@@ -9,7 +9,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Image Grid.RowSpan="2" Source="shuttlecock.png" Opacity=".03" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            <!--<Image Grid.RowSpan="2" Source="shuttlecock.png" Opacity=".03" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>-->
 
             <Grid Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
                 <Grid.RowDefinitions>

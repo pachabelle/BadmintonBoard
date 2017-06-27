@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Board\GreaterThanZeroToVisibilityConverter.cs" />
     <Compile Include="Board\SelectPlayersViewModel.cs" />
     <Compile Include="Board\BoardViewModel.cs" />
     <Compile Include="Board\Board.xaml.cs">

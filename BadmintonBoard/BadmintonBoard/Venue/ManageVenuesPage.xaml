@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BadmintonBoard.Venue.ManageVenuesPage">
     <ContentPage.Content>
-        <Grid>
+        <Grid BackgroundColor="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Image Grid.RowSpan="3" Source="shuttlecock.png" Opacity=".03" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            <!--<Image Grid.RowSpan="3" Source="shuttlecock.png" Opacity=".03" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>-->
 
             <Grid Grid.Row="0" HorizontalOptions="Fill" 
                   Margin="0,8"
@@ -23,7 +23,10 @@
                        TextColor="White"/>
             </Grid>
             
-            <ListView Grid.Row="1" ItemsSource="{Binding Venues, Mode=OneWay}" Margin="0,4">
+            <ListView Grid.Row="1"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand" 
+                      ItemsSource="{Binding Venues, Mode=OneWay}" Margin="0,4" BackgroundColor="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

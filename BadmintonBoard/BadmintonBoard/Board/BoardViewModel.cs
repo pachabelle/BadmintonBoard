@@ -31,6 +31,12 @@ namespace BadmintonBoard.Board
 
         public IList<IGame> CurrentGames => m_currentGames;
 
+        public int RoundNumber
+        {
+            get => m_roundNumber;
+            set => SetProperty(ref m_roundNumber, value);
+        }
+
         public ICommand AddPlayersCommand
         {
             get
@@ -99,26 +105,30 @@ namespace BadmintonBoard.Board
         }
 
         private void CreateRound()
-        {
+        { 
             m_currentGames.Clear();
             var remainingPlayers = m_activePlayers.ToList()
                                         .OrderBy(p => p.LastRoundPlayed)
                                         .ThenBy(p => p.NumberOfRoundsPlayed)
                                         .ThenBy(p => p.Player.Grade).ToList();
-            m_roundNumber++;
+
+            var nextRound = RoundNumber + 1;
            
             foreach (var court in m_courts)
             {
-                var game = CreateGame(m_roundNumber, court, remainingPlayers);
+                var game = CreateGame(nextRound, court, remainingPlayers);
                 if (game == null)
                     break;
 
                 m_currentGames.Add(game);
             }
-            
-            var round = new Round(m_roundNumber, m_currentGames);
 
-            m_rounds.Add(round);
+            if (m_currentGames.Any())
+            {
+                RoundNumber = nextRound;
+                var round = new Round(nextRound, m_currentGames);
+                m_rounds.Add(round);
+            }
         }
 
         private IGame CreateGame(int roundNumder, Court court, IList<IActivePlayer> remainingPlayers)

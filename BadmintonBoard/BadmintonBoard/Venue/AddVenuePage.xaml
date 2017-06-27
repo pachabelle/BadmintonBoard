@@ -4,7 +4,7 @@
              x:Class="BadmintonBoard.Venue.AddVenuePage">
     <ContentPage.Content>
         <Grid>
-            <Image Source="shuttlecock.png" Opacity=".03" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            <!--<Image Source="shuttlecock.png" Opacity=".03" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>-->
         
         <Grid Margin="4,8,4,0">
             <Grid.RowDefinitions>
@@ -36,7 +36,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid BackgroundColor="#F8F8F8" Margin="0,1" Padding="12,4">
+                            <Grid BackgroundColor="#F8F8F8" Margin="0,1" Padding="12,1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -59,9 +59,9 @@
 
             <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal"
                          VerticalOptions="End" HorizontalOptions="Center" Margin="0,8">
-                <Button Text="Add Court" Command="{Binding AddCourtCommand}"/>
-                <Button Text="Save" Command="{Binding SaveCommand}"/>
-                <Button Text="Cancel" Command="{Binding CancelCommand}"/>
+                <Button Text="Add Court" Command="{Binding AddCourtCommand}" WidthRequest="120"/>
+                <Button Text="Save" Command="{Binding SaveCommand}" WidthRequest="120"/>
+                <Button Text="Cancel" Command="{Binding CancelCommand}" WidthRequest="120"/>
             </StackLayout>
         </Grid>
         </Grid>

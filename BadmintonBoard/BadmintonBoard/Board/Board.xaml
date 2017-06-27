@@ -2,22 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:player="clr-namespace:BadmintonBoard.Player;assembly=BadmintonBoard"
+             xmlns:board="clr-namespace:BadmintonBoard.Board;assembly=BadmintonBoard"
              x:Class="BadmintonBoard.Board.Board">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <player:GradeConverter x:Key="GradeConverter"/>
+            <board:GreaterThanZeroToVisibilityConverter x:Key="GreaterThan"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Image Grid.RowSpan="3" Source="shuttlecock.png" Opacity=".03" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+        <!--<Image Grid.RowSpan="3" Source="shuttlecock.png" Opacity=".03" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>-->
 
         <StackLayout Grid.Row="0" Orientation="Vertical" Margin="0,4" Padding="0,8,0,0" BackgroundColor="#0099FF">
             <Label  Text="{Binding VenueName}"
@@ -26,8 +29,13 @@
                     HorizontalOptions="Center"/>
             <BoxView Margin="0,1,0,0" HorizontalOptions="FillAndExpand" HeightRequest="2" Color="#0066CC"/>
         </StackLayout>
+
+        <StackLayout Grid.Row="1" Orientation="Horizontal" IsVisible="{Binding RoundNumber, Converter={x:StaticResource GreaterThan}}">
+            <Label Text="Round: "/>
+            <Label Text="{Binding RoundNumber}"/>
+        </StackLayout>
         
-        <ListView Grid.Row="1" 
+        <ListView Grid.Row="2" 
                   ItemsSource="{Binding CurrentGames}"
                   IsGroupingEnabled="true"
                   GroupDisplayBinding="{Binding Title}"
@@ -63,7 +71,7 @@
             </ListView.ItemTemplate>
        </ListView>
 
-        <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,8">
+        <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,8">
             <Button Text="Add Players" Command="{Binding AddPlayersCommand}" WidthRequest="120"/>
             <Button Text="New Round" Command="{Binding CreateRoundCommand}" WidthRequest="120"/>
             <Button Text="End Session" Command="{Binding EndSessionCommand}" WidthRequest="120"/>

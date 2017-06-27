@@ -4,7 +4,7 @@
              x:Class="BadmintonBoard.Board.SelectPlayersPage">
     <ContentPage.Content>
         <Grid>
-            <Image Source="shuttlecock.png" Opacity=".03" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            <!--<Image Source="shuttlecock.png" Opacity=".03" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>-->
         
             <Grid Margin="8">
                 <Grid.RowDefinitions>
